@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <server_configure>
+        <ip>localhost</ip>
+        <port>12686</port>
+    </server_configure>
+
+    <client_configure>
+        <ip>localhost</ip>
+        <port>12686</port>
+        <query_time_sec>10</query_time_sec>
+        <directory_with_file>J:\Java\milo-master(final server)</directory_with_file>
+    </client_configure>
+</config>
