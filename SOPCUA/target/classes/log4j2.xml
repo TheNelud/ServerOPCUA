@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+        <File name="Criticals_server" fileName="logs/Criticals_server.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <SizeBasedTriggeringPolicy size="5mb" />
+            <Filters>
+                <MarkerFilter marker="Crit_server" />
+            </Filters>
+        </File>
+        <File name="NotWrited_Server" fileName="logs/NotWrited_Server.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <SizeBasedTriggeringPolicy size="5mb" />
+            <Filters>
+                <MarkerFilter marker="Input_server" />
+            </Filters>
+        </File>
+    </appenders>
+
+    <loggers>
+        <root level="debug">
+            <appender-ref ref="Criticals_server"/>
+            <appender-ref ref="NotWrited_Server"/>
+        </root>
+    </loggers>
+</configuration>

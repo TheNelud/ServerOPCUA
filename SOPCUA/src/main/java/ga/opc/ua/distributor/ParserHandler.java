@@ -70,6 +70,7 @@ public class ParserHandler extends DefaultHandler {
             ClientConfig clientConfig = new ClientConfig(ipClient, portClient, queryClient, directory);
             clientConfigList.add(clientConfig);
         }
+        currentTagName = null;
 
     }
 
