@@ -139,8 +139,13 @@ public class WriteFromText implements ClientWriter{
                 String rewriteNameFile = source.toString().substring(source.toString().lastIndexOf("\\") + 1) + "_";
                 Files.move(source, source.resolveSibling(rewriteNameFile));
 
-                if (seeker.runToDirectory("After file", absolutePath).get(0).isEmpty()){
-                    LOGGER.info(marker_err, "Is directory not txt file");
+                if (seeker.runToDirectory("After file", absolutePath).isEmpty()){
+                    do {
+                        LOGGER.info(marker_err, "Is directory not txt file");
+                        seeker.runToDirectory("After file", absolutePath);
+                        Thread.sleep(60_000);
+                    } while (seeker.runToDirectory("After file", absolutePath).isEmpty());
+
                 }
 
 
@@ -148,10 +153,10 @@ public class WriteFromText implements ClientWriter{
 //                File prevFile = new File(seeker.runToDirectory("Client", absolutePath).get(0));
 //
 //                if (afterFiles.isEmpty()){
-//                    File newFile = new File(CopyFilePath);
-//                    Files.copy(source.resolveSibling(rewriteNameFile), newFile.toPath());
-//                    LOGGER.info(marker_inp,"Отсутствуют .txt файлы в каталоге: "+path+" создание дубликата последнего найденного txt файла");
-//                    logger.info("Отсутствуют .txt файлы в каталоге: "+path+" создание дубликата последнего найденного txt файла");
+////                    File newFile = new File(CopyFilePath);
+////                    Files.copy(source.resolveSibling(rewriteNameFile), newFile.toPath());
+////                    LOGGER.info(marker_inp,"Отсутствуют .txt файлы в каталоге: "+path+" создание дубликата последнего найденного txt файла");
+////                    logger.info("Отсутствуют .txt файлы в каталоге: "+path+" создание дубликата последнего найденного txt файла");
 //                }
 
 //                Thread.sleep(query* 1000L);

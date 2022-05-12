@@ -123,9 +123,17 @@ public class ExampleNamespace extends ManagedNamespaceWithLifecycle  {
         List<String> list = null;
         try {
             list = Files.readAllLines(Paths.get(seeker.runToDirectory("Namespace",helper).get(0)));
+            if (list.isEmpty()){
+                do {
+                    list = Files.readAllLines(Paths.get(seeker.runToDirectory("Namespace", helper).get(0)));
+                    Thread.sleep(10_000);
+                } while (list.isEmpty());
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         STATIC_SCALAR_NODES_FROM_FILE = new Object[list.size()][3];
         int i=0;
